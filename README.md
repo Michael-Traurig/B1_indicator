@@ -34,8 +34,9 @@ clean_up_datagap: This function will interpolate missing data point within a tim
 
 **Example of cleaning data**
 
-cleaned_data <- long_pivot_years(data, '2000', '2023') %>% # Years run from 2000 - 2023 and are converted from columns to long format
+                cleaned_data <- long_pivot_years(data, '2000', '2023') %>% # Years run from 2000 - 2023 and are converted from columns to long format
                 Add_ES_categories(ES_type = 'ES', # ES is the name of the variable with ecosystem service names in the data
+                
                 Prov_types = c("Food and feed",   # Provisioning services
                                "Timber",
                                "Water provisioning"),
@@ -56,7 +57,7 @@ The indicator function has several options. By default it is assumed that the co
 
 **Example use of function**
 
-B1_chain_analysis(data = accounts_data, #Data set
+                  B1_chain_analysis(data = accounts_data, #Data set
                   ecosystem_disag = TRUE, #Data is disaggregated by ecosystem type
                   Aggregate_sub = TRUE, #Sub indices will be aggregated to make full index
                   Aggregate_eco = TRUE) #Ecosystem contributions will be aggregated through a geometric mean before aggregating services
@@ -69,7 +70,7 @@ A Function has been provided to plot the indices. The function works directly wi
 
 **Example use of the function**
 
-plot_chain_analysis(data = accounts_data,
+                    plot_chain_analysis(data = accounts_data,
                     ecosystem_disag = TRUE,
                     Aggregate_sub = TRUE,
                     Aggregate_eco = TRUE,
