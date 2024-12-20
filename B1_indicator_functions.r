@@ -287,13 +287,13 @@ calc_index <- function(data, #Input dataset
     return(df)
   } else {
     if (Aggregate_sub == TRUE) {
-    index <- calc_index(data = data, ecosystem_disag = ecosystem_disag, sum_eco = sum_eco, comb_output = comb_output, Aggregate_eco = Aggregate_eco) %>%
+    index <- calc_index(data = data, ecosystem_disag = ecosystem_disag, sum_eco = sum_eco, comb_output = comb_output, Aggregate_eco = Aggregate_eco, dataout = dataout) %>%
     mutate(Category = "All ES")
-    df_prov <- calc_index(data = data %>% filter(ES_category == "Provisioning"), ecosystem_disag = ecosystem_disag, sum_eco = sum_eco, comb_output = comb_output, Aggregate_eco = Aggregate_eco) %>%
+    df_prov <- calc_index(data = data %>% filter(ES_category == "Provisioning"), ecosystem_disag = ecosystem_disag, sum_eco = sum_eco, comb_output = comb_output, Aggregate_eco = Aggregate_eco, dataout = dataout) %>%
     mutate(Category = "Provisioning")
-    df_reg <- calc_index(data = data %>% filter(ES_category == "Regulating"), ecosystem_disag = ecosystem_disag, sum_eco = sum_eco, comb_output = comb_output, Aggregate_eco = Aggregate_eco) %>%
+    df_reg <- calc_index(data = data %>% filter(ES_category == "Regulating"), ecosystem_disag = ecosystem_disag, sum_eco = sum_eco, comb_output = comb_output, Aggregate_eco = Aggregate_eco, dataout = dataout) %>%
     mutate(Category = "Regulating")
-    df_cult <- calc_index(data = data %>% filter(ES_category == "Cultural"), ecosystem_disag = ecosystem_disag, sum_eco = sum_eco, comb_output = comb_output, Aggregate_eco = Aggregate_eco) %>%
+    df_cult <- calc_index(data = data %>% filter(ES_category == "Cultural"), ecosystem_disag = ecosystem_disag, sum_eco = sum_eco, comb_output = comb_output, Aggregate_eco = Aggregate_eco, dataout = dataout) %>%
     mutate(Category = "Cultural")
     df_grouped <- full_join(index, df_prov, by = "Year") %>%
       full_join(df_reg, by = "Year") %>%
@@ -313,13 +313,13 @@ calc_index <- function(data, #Input dataset
     df_all <- rbind(df_grouped, df_prov) %>% rbind(df_cult) %>% rbind(df_reg)
     return(df_all)
     } else {
-    df_index <- calc_index(data = data, ecosystem_disag = ecosystem_disag, sum_eco = sum_eco, comb_output = comb_output, Aggregate_eco = Aggregate_eco) %>%
+    df_index <- calc_index(data = data, ecosystem_disag = ecosystem_disag, sum_eco = sum_eco, comb_output = comb_output, Aggregate_eco = Aggregate_eco, dataout = dataout) %>%
     mutate(Category = "All ES")
-    df_prov <- calc_index(data = data %>% filter(ES_category == "Provisioning"), ecosystem_disag = ecosystem_disag, sum_eco = sum_eco, comb_output = comb_output, Aggregate_eco = Aggregate_eco) %>%
+    df_prov <- calc_index(data = data %>% filter(ES_category == "Provisioning"), ecosystem_disag = ecosystem_disag, sum_eco = sum_eco, comb_output = comb_output, Aggregate_eco = Aggregate_eco, dataout = dataout) %>%
     mutate(Category = "Provisioning")
-    df_reg <- calc_index(data = data %>% filter(ES_category == "Regulating"), ecosystem_disag = ecosystem_disag, sum_eco = sum_eco, comb_output = comb_output, Aggregate_eco = Aggregate_eco) %>%
+    df_reg <- calc_index(data = data %>% filter(ES_category == "Regulating"), ecosystem_disag = ecosystem_disag, sum_eco = sum_eco, comb_output = comb_output, Aggregate_eco = Aggregate_eco, dataout = dataout) %>%
     mutate(Category = "Regulating")
-    df_cult <- calc_index(data = data %>% filter(ES_category == "Cultural"), ecosystem_disag = ecosystem_disag, sum_eco = sum_eco, comb_output = comb_output, Aggregate_eco = Aggregate_eco) %>%
+    df_cult <- calc_index(data = data %>% filter(ES_category == "Cultural"), ecosystem_disag = ecosystem_disag, sum_eco = sum_eco, comb_output = comb_output, Aggregate_eco = Aggregate_eco, dataout = dataout) %>%
     mutate(Category = "Cultural")
     df_comb <- rbind(df_index, df_prov) %>% rbind(df_cult) %>% rbind(df_reg)
     return(df_comb)
@@ -375,3 +375,5 @@ if(is.null(breaks)){
       return(plot)
       break
     }
+
+
